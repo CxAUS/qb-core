@@ -160,7 +160,7 @@ function QBCore.Functions.IsWhitelisted(source)
     local plicense = QBCore.Functions.GetIdentifier(src, 'license')
     local identifiers = GetPlayerIdentifiers(src)
     if QBCore.Config.Server.whitelist then
-        local result = exports.oxmysql:fetchSync('SELECT * FROM whitelist WHERE license = ?', { plicense })
+        local result = exports.oxmysql:fetchSync('SELECT license FROM whitelist WHERE license = ?', { plicense })
         if result[1] then
             for _, id in pairs(identifiers) do
                 if result[1].license == id then
